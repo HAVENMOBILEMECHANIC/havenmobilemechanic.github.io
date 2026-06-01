@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Mechanic Broward County | We Come To You</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --yellow: #f5c518;
+    --white: #f7f4ee;
+    --gray: #1a1a1a;
+    --mid: #2e2e2e;
+    --text-muted: #999;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    background: var(--yellow);
+    color: var(--black);
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 24px 80px;
+    position: relative;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, #1c1c00 0%, transparent 70%),
+      var(--black);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, #ffffff06 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, #ffffff06 40px);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 640px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 12vw, 96px);
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  h1 span {
+    color: var(--yellow);
+  }
+
+  .hero-sub {
+    font-size: clamp(16px, 3vw, 20px);
+    color: #ccc;
+    margin: 20px 0 36px;
+    max-width: 500px;
+    line-height: 1.6;
+  }
+
+  /* ── CTA BUTTON ── */
+  .cta-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .btn-call {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--yellow);
+    color: var(--black);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 0.06em;
+    padding: 16px 32px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 4px 4px 0px #000;
+  }
+
+  .btn-call:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000;
+  }
+
+  .btn-call svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+
+  .cta-note {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  /* ── OFFER STRIP ── */
+  .offer-strip {
+    background: var(--gray);
+    border-top: 1px solid #2a2a2a;
+    border-bottom: 1px solid #2a2a2a;
+    padding: 40px 24px;
+  }
+
+  .offer-strip-inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .offer-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 20px;
+  }
+
+  .offer-box {
+    background: var(--mid);
+    border-left: 4px solid var(--yellow);
+    padding: 24px 28px;
+    margin-bottom: 16px;
+  }
+
+  .offer-box h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.04em;
+    color: var(--yellow);
+    margin-bottom: 6px;
+  }
+
+  .offer-box p {
+    font-size: 15px;
+    color: #bbb;
+    line-height: 1.5;
+  }
+
+  /* ── TRUST SECTION ── */
+  .trust {
+    padding: 60px 24px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 28px;
+  }
+
+  .trust-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .trust-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 16px;
+    color: #ccc;
+    line-height: 1.5;
+  }
+
+  .trust-list li::before {
+    content: '✓';
+    color: var(--yellow);
+    font-weight: 700;
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .trust-list strong {
+    color: var(--white);
+  }
+
+  /* ── SERVICES ── */
+  .services {
+    background: var(--gray);
+    padding: 60px 24px;
+    border-top: 1px solid #222;
+  }
+
+  .services-inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 8px;
+  }
+
+  .service-item {
+    background: var(--mid);
+    padding: 18px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #ccc;
+    border-left: 2px solid #333;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .service-item:hover {
+    border-color: var(--yellow);
+    color: var(--white);
+  }
+
+  /* ── BOTTOM CTA ── */
+  .bottom-cta {
+    padding: 80px 24px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse 60% 80% at 50% 100%, #1c1c00 0%, transparent 70%),
+      var(--black);
+  }
+
+  .bottom-cta h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 9vw, 64px);
+    line-height: 1;
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+  }
+
+  .bottom-cta h2 span { color: var(--yellow); }
+
+  .bottom-cta p {
+    color: #999;
+    font-size: 15px;
+    margin-bottom: 32px;
+  }
+
+  .bottom-cta .btn-call {
+    margin: 0 auto;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #050505;
+    border-top: 1px solid #1a1a1a;
+    padding: 24px;
+    text-align: center;
+    font-size: 13px;
+    color: #555;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-inner > * {
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .eyebrow      { animation-delay: 0.05s; }
+  h1            { animation-delay: 0.15s; }
+  .hero-sub     { animation-delay: 0.25s; }
+  .cta-wrap     { animation-delay: 0.35s; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 480px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .btn-call { font-size: 22px; padding: 14px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  Broward County · Mobile Service · We Come To You
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Mobile Mechanic · Broward County</span>
+    <h1>We Come<br>To <span>You.</span></h1>
+    <p class="hero-sub">
+      Skip the tow truck. Skip the waiting room.
+      We fix your car at your home, office, or wherever you're stuck.
+    </p>
+    <div class="cta-wrap">
+      <a href="tel:+19545550000" class="btn-call">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+        CALL OR TEXT NOW
+      </a>
+      <span class="cta-note">Available today · Fast response · Broward County</span>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER STRIP -->
+<section class="offer-strip">
+  <div class="offer-strip-inner">
+    <p class="offer-label">Our Guarantee</p>
+
+    <div class="offer-box">
+      <h3>$80 Diagnostic — Credited To Your Repair</h3>
+      <p>We diagnose your vehicle for $80. If you proceed with the repair, that $80 comes straight off your bill. You never pay twice.</p>
+    </div>
+
+    <div class="offer-box">
+      <h3>Written Quote Before We Touch Anything</h3>
+      <p>You approve the price before a single wrench moves. No surprises. No pressure. Just a clear number upfront.</p>
+    </div>
+
+    <div class="offer-box">
+      <h3>Late Arrival = Free Diagnostic</h3>
+      <p>If we miss your scheduled arrival window, your diagnostic is on us. We show up when we say we will — or you don't pay for it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust">
+  <p class="section-label">Why People Call Us</p>
+  <ul class="trust-list">
+    <li><strong>No hidden fees.</strong> Parts and labor. That's it.</li>
+    <li><strong>No shop markups.</strong> You pay what the part costs, not what a shop decides to charge.</li>
+    <li><strong>We show up.</strong> Ghosting customers isn't how we operate.</li>
+    <li><strong>You talk directly to your mechanic.</strong> No middleman, no runaround.</li>
+    <li><strong>Fixed at your location.</strong> Home, office, parking lot — wherever you are.</li>
+  </ul>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="services-inner">
+    <p class="section-label">Services</p>
+    <div class="services-grid">
+      <div class="service-item">Diagnostics</div>
+      <div class="service-item">Battery Replacement</div>
+      <div class="service-item">Starter Repair</div>
+      <div class="service-item">Alternator Repair</div>
+      <div class="service-item">Brake & Rotor Service</div>
+      <div class="service-item">Oil Changes</div>
+      <div class="service-item">Coil Packs & Spark Plugs</div>
+      <div class="service-item">General Repairs</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="bottom-cta">
+  <h2>Ready To Get<br><span>Back On The Road?</span></h2>
+  <p>Call or text for a fast quote. We serve all of Broward County.</p>
+  <a href="tel:+19545550000" class="btn-call">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+    </svg>
+    CALL OR TEXT NOW
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  Mobile Mechanic · Broward County, FL · Serving the surrounding area
+</footer>
+
+</body>
+</html>
